@@ -33,24 +33,13 @@ def ID3(data,originaldata,features,target_attribute_name="class",parent_node_cla
             sub_data = data.where(data[best_feature] == value).dropna()
             subtree = ID3(sub_data,dataset,features,target_attribute_name,parent_node_class)
             tree[best_feature][value] = subtree
-        return(tree) 
-
+        return(tree)
 def train_test_split(dataset):
     training_data = dataset.iloc[:14].reset_index(drop=True)
-    return training_data  #,testing_data
-def test(data,tree):
-    queries = data.iloc[:,:-1].to_dict(orient = "records")
-    predicted = pd.DataFrame(columns=["predicted"]) 
-   # for i in range(len(data)):
-   #     predicted.loc[i,"predicted"] = predict(queries[i],tree,1.0) 
-   # print('The predictionaccuracy is: ',(np.sum(predicted["predicted"] == data["class"])/len(data))*100,'%')
+    return training_data
 XX = train_test_split(dataset)
 training_data=XX
 print("training data",training_data)
 tree = ID3(training_data,training_data,training_data.columns[:-1])
 print(' Display Tree',tree)
 print('len=',len(training_data))
-test(training_data,tree)
-
-
-    
