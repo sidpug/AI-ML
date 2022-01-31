@@ -1,21 +1,13 @@
-# -*- coding: utf-8 -*-
-"""
-EMM and K-means Algorithm 
-@author: sarvesh
-"""
-
 import matplotlib.pyplot as plt
 from sklearn import datasets
 from sklearn.cluster import KMeans
 import pandas as pd
 import numpy as np
-# import some data to play with
 iris = datasets.load_iris()
 X = pd.DataFrame(iris.data)
 X.columns = ['Sepal_Length','Sepal_Width','Petal_Length','Petal_Width']
 y = pd.DataFrame(iris.target)
 y.columns = ['Targets']
-# Build the K Means Model
 model = KMeans(n_clusters=3)
 model.fit(X) # model.labels_ : Gives cluster no for which samples belongs to
 # # Visualise the clustering results
